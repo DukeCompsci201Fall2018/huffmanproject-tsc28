@@ -63,7 +63,7 @@ public class HuffProcessor {
 			}
 			map.put(val, map.get(val)+1);
 		}
-		int[] ret = new int[ALPH_SIZE];
+		int[] ret = new int[ALPH_SIZE+1];
 		for (int i : map.keySet()) {
 			ret[i] = map.get(i);
 		}	
@@ -123,13 +123,13 @@ public class HuffProcessor {
 		while (true) {
 			int val = in.readBits(BITS_PER_WORD);
 			if (val == -1) {
-				String code = codings[256];
-				out.writeBits(code.length(), Integer.parseInt(code,2));
 				break;
 			}
 			String code = codings[val];
 			out.writeBits(code.length(), Integer.parseInt(code,2));
 		}
+		String code = codings[256];
+		out.writeBits(code.length(), Integer.parseInt(code,2));
 	}
 	
 	/**
