@@ -85,6 +85,9 @@ public class HuffProcessor {
 					left.myWeight+right.myWeight, left,right);
 			pq.add(t);
 		}
+		if (myDebugLevel >= DEBUG_HIGH) {
+			System.out.printf("pq created with %d nodes /n",  pq.size());
+		}
 		HuffNode root = pq.remove();
 		return root;
 	}
